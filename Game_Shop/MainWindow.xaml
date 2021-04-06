@@ -5,8 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game_Shop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="350" Width="500">
+ 
+    <StackPanel Background="Gold" Margin="0,0,0,0">
+        <!--Верхняя панель с выбором игры-->
+        <Viewbox  Width="300">
+            <TextBlock >Выбери игру</TextBlock>
+        </Viewbox>
+        <Border>
+            <ComboBox x:Name="Combo_box_Game" 
+                      SelectedIndex="0"
+                      Margin="30 30 30 0"></ComboBox>
+        </Border>
+        <Grid Background="Gold" Height="150">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0" Name="Button_info"
+                    FontSize="15" 
+                     Margin="10 20 10 20"
+                    HorizontalContentAlignment="Center"  >
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <TextBlock>Посмотреть информацию</TextBlock>
+                        </Viewbox>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button FontSize="15" x:Name="Button_Add"
+                    Grid.Column="1"
+                     HorizontalContentAlignment="Center"
+                       Margin="10 20 10 20" >
+
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <TextBlock Margin="3 3 3 3">Добавить новую игру</TextBlock>
+                        </Viewbox>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+
+            <Button FontSize="15"  x:Name="Button_Dell"
+                    Grid.Column="1" Grid.Row="1"
+                     HorizontalContentAlignment="Center"
+                       Margin="10 20 10 20" >
+
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <TextBlock>Удалить  игру</TextBlock>
+                        </Viewbox>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button Grid.Column="0" Grid.Row="1" Name="Button_Serch"
+                    FontSize="15" 
+                     Margin="10 20 10 20"
+                    HorizontalContentAlignment="Center"  >
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <TextBlock>Поиск игры</TextBlock>
+                        </Viewbox>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </Grid>
+    </StackPanel>
+
 </Window>
