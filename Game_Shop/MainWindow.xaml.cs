@@ -30,22 +30,19 @@ namespace Game_Shop
             Button_Dell.Click += Button_Dell_Click;
             Button_info.Click += Button_info_Click;
             Button_Serch.Click += Button_Serch_Click;
-
-            Combo_box_Game.ItemsSource = View_Model_Game.Games;
+            Loaded += MainWindow_Loaded;
+           
             
         }
 
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            View_Model_Game.Games.ForEach(i => Combo_box_Game.Items.Add(i.Game_Name));
+        }
+
         private void Button_Serch_Click(object sender, RoutedEventArgs e) => new Window_serch().ShowDialog();
-
-
         private void Button_info_Click(object sender, RoutedEventArgs e) => new Window_rezult().ShowDialog();
-
-
-
         private void Button_Dell_Click(object sender, RoutedEventArgs e) => View_Model_Game.Dell_Game(Combo_box_Game.ItemsSource);
-
-
-
         private void Button_Add_Click(object sender, RoutedEventArgs e)=> new Window_Add().ShowDialog();
        
     }
