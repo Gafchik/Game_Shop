@@ -68,11 +68,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\View_Model_Game.cs" />
-    <Compile Include="View\Window_Add.xaml.cs">
-      <DependentUpon>Window_Add.xaml</DependentUpon>
+    <Compile Include="View\Window_add.xaml.cs">
+      <DependentUpon>Window_add.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window_rezult.xaml.cs">
-      <DependentUpon>Window_rezult.xaml</DependentUpon>
+    <Compile Include="View\Window_Rezult.xaml.cs">
+      <DependentUpon>Window_Rezult.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Window_serch.xaml.cs">
       <DependentUpon>Window_serch.xaml</DependentUpon>
@@ -89,11 +89,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Window_Add.xaml">
+    <Page Include="View\Window_add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window_rezult.xaml">
+    <Page Include="View\Window_Rezult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,11 +110,6 @@
     <Compile Include="Model_EF\Style.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

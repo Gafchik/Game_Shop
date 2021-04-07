@@ -8,7 +8,8 @@ namespace Game_Shop.Model_EF
 
     [Table("Game")]
     public partial class Game
-    {
+    {     
+
         public int Id { get; set; }
 
         [Required]

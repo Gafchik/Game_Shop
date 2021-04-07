@@ -35,15 +35,16 @@ namespace Game_Shop
             
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private  void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            View_Model_Game.Games.ForEach(i => Combo_box_Game.Items.Add(i.Game_Name));
+           View_Model_Game.BD.Games.ToList().ForEach(i => Combo_box_Game.Items.Add(i.Game_Name.ToString()));
+            Combo_box_Game.SelectedIndex = 0;
         }
 
         private void Button_Serch_Click(object sender, RoutedEventArgs e) => new Window_serch().ShowDialog();
-        private void Button_info_Click(object sender, RoutedEventArgs e) => new Window_rezult().ShowDialog();
-        private void Button_Dell_Click(object sender, RoutedEventArgs e) => View_Model_Game.Dell_Game(Combo_box_Game.ItemsSource);
-        private void Button_Add_Click(object sender, RoutedEventArgs e)=> new Window_Add().ShowDialog();
+        private void Button_info_Click(object sender, RoutedEventArgs e) => View_Model_Game.Info_Game(Combo_box_Game.SelectedItem);
+        private void Button_Dell_Click(object sender, RoutedEventArgs e) => View_Model_Game.Dell_Game(Combo_box_Game.SelectedItem);
+        private void Button_Add_Click(object sender, RoutedEventArgs e)=> new Window_add().ShowDialog();
        
     }
 }
