@@ -38,19 +38,19 @@
                        FontSize="20" Grid.Column="1"                     
                        Grid.Row="0" >
             </TextBox>
-            <ComboBox x:Name="ComboBox_Game_Style" 
+            <ComboBox x:Name="ComboBox_Game_Style"  IsEnabled="False"
                        FontSize="20" Grid.Column="1" 
                        Grid.Row="1" >
             </ComboBox>
-            <ComboBox x:Name="ComboBox_Game_Studio" 
+            <ComboBox x:Name="ComboBox_Game_Studio"  IsEnabled="False"
                        FontSize="20" Grid.Column="1" 
                        Grid.Row="2" >
             </ComboBox>
-            <Calendar x:Name="Calendar" 
+            <Calendar x:Name="Calendar"  IsEnabled="False"
                       Grid.Column="1" 
                        Grid.Row="3" >
             </Calendar>
-            <ComboBox x:Name="ComboBox_Game_Mod" 
+            <ComboBox x:Name="ComboBox_Game_Mod"  IsEnabled="False"
                        FontSize="20" Grid.Column="1" 
                        Grid.Row="4" >
             </ComboBox>

@@ -35,13 +35,14 @@ namespace Game_Shop.View
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            View_Model_Game.Edit(curent_game,
-TextBlock_Game_Name.Text,
-Calendar.SelectedDate.Value,
-TextBlock_Game_Sells.Text,
-ComboBox_Game_Style.SelectedItem.ToString(),
-ComboBox_Game_Studio.SelectedItem.ToString(),
-ComboBox_Game_Mod.SelectedItem.ToString());
+            curent_game.Game_Name = TextBlock_Game_Name.Text;
+            curent_game.Game_Studio_id =  View_Model_Game.BD.Studios.ToList().Find(i => i.Studio_Name == ComboBox_Game_Studio.SelectedItem.ToString()).Id;
+            curent_game.Game_Style_id = View_Model_Game.BD.Styles.ToList().Find(i => i.Style_Game_Name == ComboBox_Game_Style.SelectedItem.ToString()).Id;
+            curent_game.Game_Year_Releas = new DateTime(Calendar.SelectedDate.Value.Year, Calendar.SelectedDate.Value.Month, Calendar.SelectedDate.Value.Day);
+            curent_game.Game_Mod_id = View_Model_Game.BD.Mod_Game.ToList().Find(i => i.Mod_Game_Name == ComboBox_Game_Mod.SelectedItem.ToString()).Id;
+            curent_game.Game_Count_Sell = Convert.ToInt32(TextBlock_Game_Sells.Text);
+            View_Model_Game.BD.SaveChanges();
+            MessageBox.Show("Информация успешно обновлена", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             Load();
 
         }
