@@ -31,12 +31,12 @@ namespace Game_Shop
             Button_info.Click += Button_info_Click;
             Button_Serch.Click += Button_Serch_Click;
             Loaded += MainWindow_Loaded;
-           
-            
+
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) => Load();
-       
+
         private void Load()
         {
             if (Combo_box_Game.Items.Count != 0)
@@ -46,8 +46,8 @@ namespace Game_Shop
         }
         private void Button_Serch_Click(object sender, RoutedEventArgs e) => new Window_serch().ShowDialog();
         private void Button_info_Click(object sender, RoutedEventArgs e) { View_Model_Game.Info_Game(Combo_box_Game.SelectedItem); Load(); }
-        private void Button_Dell_Click(object sender, RoutedEventArgs e) => View_Model_Game.Dell_Game(Combo_box_Game.SelectedItem);
-        private void Button_Add_Click(object sender, RoutedEventArgs e)=> new Window_add().ShowDialog();
+        private void Button_Dell_Click(object sender, RoutedEventArgs e) { View_Model_Game.Dell_Game(Combo_box_Game.SelectedItem); Load(); }
+        private void Button_Add_Click(object sender, RoutedEventArgs e) { new Window_add().ShowDialog(); Load(); }
        
     }
 }

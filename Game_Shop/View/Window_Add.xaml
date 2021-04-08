@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game_Shop.View"
         mc:Ignorable="d"
-        Title="Добавление новой игры" Height="500" Width="800">
+        Title="Добавление новой игры" Height="550" Width="800">
     <StackPanel x:Name="Stack" Background="Gold">
         <!--нижняя панель панель с  результатом-->
         <Viewbox  Width="150">
@@ -26,13 +26,32 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="20"  Grid.Row="0" >Название :</TextBlock>
-            <TextBlock FontSize="20" Grid.Row="1"  >Стиль :</TextBlock>
-            <TextBlock FontSize="20" Grid.Row="2"  >Студия :</TextBlock>
-            <TextBlock FontSize="20" Grid.Row="3" VerticalAlignment="Center" >Год релиза :</TextBlock>
-            <TextBlock FontSize="20"  Grid.Row="4" >Online mod :</TextBlock>
-            <TextBlock  FontSize="20" Grid.Row="5" >Количество продаж :</TextBlock>
+            <TextBlock FontSize="20"  Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Center" >Название :</TextBlock>
+            <TextBlock FontSize="20" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center">Стиль :</TextBlock>
+            <TextBlock FontSize="20" Grid.Row="2"  VerticalAlignment="Center"  HorizontalAlignment="Center">Студия :</TextBlock>
+            <TextBlock FontSize="20" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">Год релиза :</TextBlock>
+            <TextBlock FontSize="20"  Grid.Row="4" VerticalAlignment="Center"  HorizontalAlignment="Center">Online mod :</TextBlock>
+            <TextBlock  FontSize="20" Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Center">Количество продаж :</TextBlock>
 
+            <StackPanel Orientation="Vertical"  Grid.Column="3"
+                       Grid.Row="1">
+            <TextBlock FontSize="20" Grid.Column="3"
+                       Grid.Row="1" >Новый стиль :</TextBlock>
+            <TextBox x:Name="TextBlock_New_Game_Stile" 
+                       FontSize="20" Grid.Column="3"                     
+                       Grid.Row="1" Margin="2 0 2 0" >
+            </TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"  Grid.Column="3"
+                       Grid.Row="2">
+                <TextBlock FontSize="20" Grid.Column="3"
+                       Grid.Row="1" >Новая студия :</TextBlock>
+                <TextBox x:Name="TextBlock_New_Game_Studio" 
+                       FontSize="20" Grid.Column="3"                     
+                       Grid.Row="1" Margin="2 0 2 0" >
+                </TextBox>
+            </StackPanel>
 
             <TextBox x:Name="TextBlock_Game_Name" 
                        FontSize="20" Grid.Column="1"                     
@@ -60,7 +79,7 @@
             </TextBox>
 
             <TextBlock FontSize="20" VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Center"
                        Grid.Row="6" >Редактирование :</TextBlock>
             <Button Grid.Column="1"
                     Name="Button_ADD"

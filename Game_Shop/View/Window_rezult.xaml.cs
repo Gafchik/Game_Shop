@@ -35,15 +35,15 @@ namespace Game_Shop.View
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            curent_game.Game_Name = TextBlock_Game_Name.Text;
-            curent_game.Game_Studio_id =  View_Model_Game.BD.Studios.ToList().Find(i => i.Studio_Name == ComboBox_Game_Studio.SelectedItem.ToString()).Id;
-            curent_game.Game_Style_id = View_Model_Game.BD.Styles.ToList().Find(i => i.Style_Game_Name == ComboBox_Game_Style.SelectedItem.ToString()).Id;
-            curent_game.Game_Year_Releas = new DateTime(Calendar.SelectedDate.Value.Year, Calendar.SelectedDate.Value.Month, Calendar.SelectedDate.Value.Day);
-            curent_game.Game_Mod_id = View_Model_Game.BD.Mod_Game.ToList().Find(i => i.Mod_Game_Name == ComboBox_Game_Mod.SelectedItem.ToString()).Id;
-            curent_game.Game_Count_Sell = Convert.ToInt32(TextBlock_Game_Sells.Text);
-            View_Model_Game.BD.SaveChanges();
+              View_Model_Game.In_Game_Edit_Name(curent_game, TextBlock_Game_Name.Text);
+              View_Model_Game.In_Game_Edit_Studio_id(curent_game, ComboBox_Game_Studio.SelectedItem.ToString());
+              View_Model_Game.In_Game_Edit_Style_id(curent_game, ComboBox_Game_Style.SelectedItem.ToString());
+              View_Model_Game.In_Game_Edit_Year_Releas(curent_game, Calendar);
+              View_Model_Game.In_Game_Edit_Game_Mod_id(curent_game, ComboBox_Game_Mod.SelectedItem.ToString());
+              View_Model_Game.In_Game_Edit_Game_Count_Sell(curent_game, TextBlock_Game_Sells.Text);
+          
             MessageBox.Show("Информация успешно обновлена", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            Load();
+            Close();
 
         }
 

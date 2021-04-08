@@ -40,24 +40,68 @@ namespace Game_Shop.View
         private void Button_ADD_Click(object sender, RoutedEventArgs e)
         {
 
-            foreach (UIElement item in Stack.Children)
+            Model_EF.Game temp_Game = new Model_EF.Game();
+            temp_Game.Game_Name = TextBlock_Game_Name.Text;
+            if (TextBlock_New_Game_Studio.Text != "")
             {
-                if (item is TextBox)
-                {
-                    if ((item as TextBox).Text == "")
-                    {
-                        MessageBox.Show("Не все поля заполнены", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                }
-                else
-                {
-                   
-                }
+                View_Model_Game.BD.Studios.Add(new Model_EF.Studio() { Studio_Name = TextBlock_New_Game_Studio.Text });
+                View_Model_Game.BD.SaveChanges();
+                temp_Game.Game_Studio_id = View_Model_Game.BD.Studios.ToList().Find(i => i.Studio_Name == TextBlock_New_Game_Studio.Text).Id;
             }
+            else
+                temp_Game.Game_Studio_id = View_Model_Game.BD.Studios.ToList().Find(i => i.Studio_Name == ComboBox_Game_Studio.SelectedItem.ToString()).Id;
+
+            if (TextBlock_New_Game_Stile.Text != "")
+            {
+                View_Model_Game.BD.Styles.Add(new Model_EF.Style() { Style_Game_Name = TextBlock_New_Game_Stile.Text });
+                View_Model_Game.BD.SaveChanges();
+                temp_Game.Game_Studio_id = View_Model_Game.BD.Styles.ToList().Find(i => i.Style_Game_Name == TextBlock_New_Game_Stile.Text).Id;
+            }
+            else
+                temp_Game.Game_Style_id = View_Model_Game.BD.Styles.ToList().Find(i => i.Style_Game_Name == ComboBox_Game_Style.SelectedItem.ToString()).Id;
+
+            try
+            {
+                temp_Game.Game_Year_Releas = Calendar.SelectedDate.Value;
+            }
+            catch (Exception)
+            {
+                temp_Game.Game_Year_Releas = DateTime.Now;
+            }
+           // temp_Game.Game_Year_Releas = new DateTime(Calendar.SelectedDate.Value.Year, Calendar.SelectedDate.Value.Month, Calendar.SelectedDate.Value.Day);
+            temp_Game.Game_Mod_id = View_Model_Game.BD.Mod_Game.ToList().Find(i => i.Mod_Game_Name == ComboBox_Game_Mod.SelectedItem.ToString()).Id;
+            temp_Game.Game_Count_Sell = Convert.ToInt32(TextBlock_Game_Sells.Text);
+
+
+            View_Model_Game.BD.Games.Add(temp_Game);
             
-            
-           
+            View_Model_Game.BD.SaveChanges();
+            MessageBox.Show("Информация успешно добавлена", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            Close();
+            //    In_Game_Edit_Style_id
+
+            //TextBlock_New_Game_Stile 
+
+            // TextBlock_New_Game_Studio 
+
+            //   TextBlock_Game_Name 
+
+            //  ComboBox_Game_Style 
+
+            //   ComboBox_Game_Studio 
+
+            //  Calendar 
+
+            //  ComboBox_Game_Mod 
+
+            //  TextBlock_Game_Sells 
+
+            //   Button_ADD 
+
         }
+
+
+
+
     }
 }
