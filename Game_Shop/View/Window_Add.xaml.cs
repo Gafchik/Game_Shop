@@ -26,7 +26,6 @@ namespace Game_Shop.View
             Button_ADD.Click += Button_ADD_Click;
             Loaded += Window_add_Loaded;
         }
-
         private void Window_add_Loaded(object sender, RoutedEventArgs e)
         {        
             View_Model_Game.BD.Styles.ToList().ForEach(i => ComboBox_Game_Style.Items.Add(i.Style_Game_Name.ToString()));         
@@ -36,10 +35,8 @@ namespace Game_Shop.View
             ComboBox_Game_Studio.SelectedIndex = 0;
             ComboBox_Game_Mod.SelectedIndex = 0;
         }
-
         private void Button_ADD_Click(object sender, RoutedEventArgs e)
         {
-
             Model_EF.Game temp_Game = new Model_EF.Game();
             temp_Game.Game_Name = TextBlock_Game_Name.Text;
             if (TextBlock_New_Game_Studio.Text != "")
@@ -50,7 +47,6 @@ namespace Game_Shop.View
             }
             else
                 temp_Game.Game_Studio_id = View_Model_Game.BD.Studios.ToList().Find(i => i.Studio_Name == ComboBox_Game_Studio.SelectedItem.ToString()).Id;
-
             if (TextBlock_New_Game_Stile.Text != "")
             {
                 View_Model_Game.BD.Styles.Add(new Model_EF.Style() { Style_Game_Name = TextBlock_New_Game_Stile.Text });
@@ -68,40 +64,21 @@ namespace Game_Shop.View
             {
                 temp_Game.Game_Year_Releas = DateTime.Now;
             }
-           // temp_Game.Game_Year_Releas = new DateTime(Calendar.SelectedDate.Value.Year, Calendar.SelectedDate.Value.Month, Calendar.SelectedDate.Value.Day);
             temp_Game.Game_Mod_id = View_Model_Game.BD.Mod_Game.ToList().Find(i => i.Mod_Game_Name == ComboBox_Game_Mod.SelectedItem.ToString()).Id;
             temp_Game.Game_Count_Sell = Convert.ToInt32(TextBlock_Game_Sells.Text);
-
-
-            View_Model_Game.BD.Games.Add(temp_Game);
-            
-            View_Model_Game.BD.SaveChanges();
-            MessageBox.Show("Информация успешно добавлена", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            Close();
-            //    In_Game_Edit_Style_id
-
-            //TextBlock_New_Game_Stile 
-
-            // TextBlock_New_Game_Studio 
-
-            //   TextBlock_Game_Name 
-
-            //  ComboBox_Game_Style 
-
-            //   ComboBox_Game_Studio 
-
-            //  Calendar 
-
-            //  ComboBox_Game_Mod 
-
-            //  TextBlock_Game_Sells 
-
-            //   Button_ADD 
-
+            if (View_Model_Game.BD.Games.ToList().Exists(i => i.Game_Name == temp_Game.Game_Name))
+            {
+                GC.Collect(GC.GetGeneration(temp_Game));
+                MessageBox.Show("Такая игра уже существует", "ОЙ", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else 
+            {
+                View_Model_Game.BD.Games.Add(temp_Game);
+                View_Model_Game.BD.SaveChanges();
+                MessageBox.Show("Информация успешно добавлена", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+           
+            Close();        
         }
-
-
-
-
     }
 }

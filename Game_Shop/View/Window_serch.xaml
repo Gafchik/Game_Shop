@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game_Shop.View"
         mc:Ignorable="d"
-        Title="Поиск" Height="300" Width="800">
+        Title="Поиск" Height="700" Width="800">
     <!--Средняя панель с выбором поиска-->
     <StackPanel Background="Gold">
         <Viewbox  Width="300">
@@ -16,20 +16,18 @@
                       SelectedIndex="0"
                       Margin="30 30 30 0"></ComboBox>
         </Border>
-        <Grid Background="Gold">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock FontSize="20" Grid.Column="0"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center" >Ключевое слово :</TextBlock>
-            <TextBox Grid.Column="1"  Margin="10 20 10 20"></TextBox>
-        </Grid>
+        <Viewbox  Width="300">
+            <TextBlock >Выбери из чего искать</TextBlock>
+        </Viewbox>
+        <Border>
+            <ComboBox x:Name="Combo_box_Selected_serch2" 
+                      SelectedIndex="0"
+                      Margin="30 30 30 0"></ComboBox>
+        </Border>
+       
         <Grid Height="70">
             <Button  HorizontalContentAlignment="Center" 
-                 Margin="50 20 50 20" >
-
+                 Margin="50 20 50 20" Name="butt_search">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <Viewbox>
@@ -39,5 +37,25 @@
                 </Button.ContentTemplate>
             </Button>
         </Grid>
+        <Grid Background="Gold" Height="385">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="rezult" Margin="20"
+                  Grid.Row="0"
+                     Grid.RowSpan="6"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+            </ListBox>
+        </Grid>
+           
+      
+        
+           
     </StackPanel>
 </Window>

@@ -22,19 +22,23 @@ namespace Game_Shop.ViewModel
         }
 
         internal static void Dell_Game(object SelectedItem)
-        {
-
-            lock (typeof(View_Model_Game))
+        {          
+            if (MessageBox.Show("Удалить игру?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                return;
+            else
             {
-                using (Model_Game_Shop BDD = new Model_Game_Shop())
+                lock (typeof(View_Model_Game))
                 {
-                    if (BDD.Games.ToList().Exists(i => i.Game_Name == (SelectedItem as string)))
+                    using (Model_Game_Shop BDD = new Model_Game_Shop())
                     {
+                        if (BDD.Games.ToList().Exists(i => i.Game_Name == (SelectedItem as string)))
+                        {
                             BDD.Games.Remove(BDD.Games.ToList().Find(i => i.Game_Name == (SelectedItem as string)));
                             BDD.SaveChanges();
+                        }
+                        else
+                            MessageBox.Show("Что-то пошло нет так", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    else
-                        MessageBox.Show("Что-то пошло нет так", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
